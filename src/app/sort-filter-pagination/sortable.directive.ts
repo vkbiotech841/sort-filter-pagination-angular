@@ -1,7 +1,7 @@
+import { MySchool } from './school-interface';
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
-import { Country } from './country';
 
-export type SortColumn = keyof Country | '';
+export type SortColumn = keyof MySchool | '';
 export type SortDirection = 'asc' | 'desc' | '';
 const rotate: { [key: string]: SortDirection } = { 'asc': 'desc', 'desc': '', '': 'asc' };
 

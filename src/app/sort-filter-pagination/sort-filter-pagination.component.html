@@ -17,25 +17,31 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col" sortable="name" (sort)="onSort($event)">Country</th>
-                <th scope="col" sortable="area" (sort)="onSort($event)">Area</th>
-                <th scope="col" sortable="population" (sort)="onSort($event)">Population</th>
+                <th scope="col" sortable="class" (sort)="onSort($event)">Class</th>
+                <th scope="col" sortable="section" (sort)="onSort($event)">Section</th>
+                <th scope="col" sortable="classTeacher" (sort)="onSort($event)">Class Teacher</th>
+                <th scope="col" sortable="studentCount" (sort)="onSort($event)">Student count</th>
+                <th scope="col" sortable="performance" (sort)="onSort($event)">Performance</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let country of countries$ | async">
-                <th scope="row">{{ country.id }}</th>
+            <tr *ngFor="let schoolProfile of schoolProfiles$ | async">
                 <td>
-                    <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2"
-                        style="width: 20px">
-                    <ngb-highlight [result]="country.name" [term]="service.searchTerm"></ngb-highlight>
+                    <ngb-highlight [result]="schoolProfile.class" [term]="service.searchTerm"></ngb-highlight>
                 </td>
                 <td>
-                    <ngb-highlight [result]="country.area | number" [term]="service.searchTerm"></ngb-highlight>
+                    <ngb-highlight [result]="schoolProfile.section" [term]="service.searchTerm"></ngb-highlight>
                 </td>
                 <td>
-                    <ngb-highlight [result]="country.population | number" [term]="service.searchTerm"></ngb-highlight>
+                    <ngb-highlight [result]="schoolProfile.classTeacher" [term]="service.searchTerm"></ngb-highlight>
+                </td>
+                <td>
+                    <ngb-highlight [result]="schoolProfile.studentCount | number" [term]="service.searchTerm">
+                    </ngb-highlight>
+                </td>
+                <td>
+                    <ngb-highlight [result]="schoolProfile.performance" [term]="service.searchTerm">
+                    </ngb-highlight>
                 </td>
             </tr>
         </tbody>

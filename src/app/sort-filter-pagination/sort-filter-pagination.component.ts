@@ -1,26 +1,28 @@
+import { MySchool } from './school-interface';
 import { DecimalPipe } from "@angular/common";
 import { Component, OnInit, QueryList, ViewChildren } from "@angular/core";
 import { Observable } from "rxjs";
 
-import { Country } from "./country";
-import { CountryService } from "./country.service";
 import { NgbdSortableHeader, SortEvent } from "./sortable.directive";
+import { SchoolService } from './school.service';
 
 @Component({
   selector: 'app-sort-filter-pagination',
   templateUrl: './sort-filter-pagination.component.html',
   styleUrls: ['./sort-filter-pagination.component.scss'],
-  providers: [CountryService, DecimalPipe]
+  providers: [SchoolService, DecimalPipe]
 })
 export class SortFilterPaginationComponent implements OnInit {
 
-  countries$: Observable<Country[]>;
+  schoolProfiles$: Observable<MySchool[]>;
   total$: Observable<number>;
 
   @ViewChildren(NgbdSortableHeader) headers!: QueryList<NgbdSortableHeader>;
 
-  constructor(public service: CountryService) {
-    this.countries$ = service.countries$;
+  constructor(
+    public service: SchoolService
+  ) {
+    this.schoolProfiles$ = service.schoolProfiles$;
     this.total$ = service.total$;
   }
 
