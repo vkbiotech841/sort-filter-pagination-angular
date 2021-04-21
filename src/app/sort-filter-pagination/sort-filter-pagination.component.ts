@@ -27,10 +27,11 @@ export class SortFilterPaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    // throw new Error("Method not implemented.");
   }
 
   onSort({ column, direction }: SortEvent) {
+    console.log("sorting started");
     // resetting other headers
     this.headers.forEach(header => {
       if (header.sortable !== column) {
